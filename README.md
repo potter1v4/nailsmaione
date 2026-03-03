@@ -15,13 +15,9 @@ Este é um projeto de **Landing Page** profissional desenvolvida para a **Nails 
 - **HTML5:** Estruturação semântica.
 - **CSS3:** Estilização, layout flexbox/grid e efeitos de responsividade.
 - **JavaScript:** Lógica de agendamento, formatação de data e integração com API do WhatsApp.
-- **Google Fonts:** Tipografia selecionada para o nicho de luxo/beleza.
+- **Google Fonts:** Tipografia selecionada para o nicho de luxo/beleza.          
 
 ## 📸 Preview do Projeto
-
-
-
-
 
 > **Status do Projeto:** ✅ Finalizado e pronto para uso.
 
@@ -33,4 +29,4 @@ Se você gostou deste projeto ou quer saber mais sobre como ele foi construído:
 - **Instagram do Cliente:** [@nailsmaione](https://www.instagram.com/nailsmaione)
 
 ---
-Desvolvido com ❤️ por [Seu Nome]
+Desvolvido com ❤️ por João Pedro Gonçalves.
