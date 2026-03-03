@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nails Maione - Agendamento</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Efeito de rolagem suave */
+        html { scroll-behavior: smooth; }
+
+        /* Reset básico */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            border-bottom: 1px solid #f0f0f0;
+            position: sticky; 
+            top: 0;
+            background: white;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        nav ul { display: flex; list-style: none; align-items: center; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { text-decoration: none; color: #333; font-size: 14px; text-transform: uppercase; }
+
+        .btn-book-nav { border: 1px solid #333; padding: 8px 18px; transition: 0.3s; }
+        .btn-book-nav:hover { background: #000; color: #fff; }
+
+        /* Hero Section */
+        .hero { display: flex; align-items: center; background-color: #fcfcfc; min-height: 500px; }
+        .hero-image { flex: 1; overflow: hidden; height: 500px; }
+        .hero-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .hero-text { flex: 1; text-align: center; padding: 60px; }
+        .hero-text h1 { font-family: 'Playfair Display', serif; font-size: 52px; margin-bottom: 30px; font-weight: 400; }
+
+        .btn-hero {
+            background: transparent;
+            border: 1px solid #333;
+            padding: 12px 40px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            text-decoration: none;
+            color: #333;
+        }
+        .btn-hero:hover { background: #000; color: #fff; }
+
+        /* Portfolio */
+        .portfolio { text-align: center; padding: 100px 8% 60px; }
+        .portfolio p { font-size: 18px; margin-bottom: 30px; color: #666; }
+        .grid-fotos { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .grid-fotos img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border: 1px solid #eee; }
+
+        /* Seção Sobre - AJUSTADA PARA HARMONIA */
+        .about {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 100px 8%;
+            background-color: #fcfcfc;
+            gap: 60px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 20px 20px 0px #f0e4e4; /* Cor suave para combinar com a blusa */
+            /* O comando abaixo inverte a foto para o logo ficar legível */
+            transform: scaleX(-1); 
+            display: block;
+        }
+
+        .about-text { flex: 1; min-width: 300px; }
+        .about-text h2 { font-family: 'Playfair Display', serif; font-size: 38px; margin-bottom: 20px; }
+        .about-text p { margin-bottom: 20px; color: #555; font-size: 16px; }
+
+        /* Agendamento */
+        .booking { padding: 100px 8%; background-color: #fff; text-align: center; }
+        .booking h2 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 40px; }
+        .container-flex { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; max-width: 600px; margin: 0 auto; }
+        .form-box { flex: 1; min-width: 300px; text-align: left; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 13px; margin-bottom: 8px; font-weight: bold; }
+        .form-group select, .form-group input { 
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; background: #fff;
+        }
+
+        .btn-confirm {
+            width: 100%; background: #000; color: #fff; padding: 15px; border: none;
+            border-radius: 30px; font-size: 16px; cursor: pointer; margin-top: 20px; transition: 0.3s;
+        }
+        .btn-confirm:hover { background: #333; }
+
+        /* Rodapé */
+        footer { padding: 40px; text-align: center; border-top: 1px solid #eee; }
+        footer .social a { text-decoration: none; color: #333; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .insta-icon { width: 24px; height: 24px; }
+
+        /* Responsividade Celular */
+        @media (max-width: 768px) {
+            header { flex-direction: column; padding: 15px 5%; }
+            .logo { margin-bottom: 15px; }
+            nav ul { gap: 10px; }
+            .hero { flex-direction: column; }
+            .hero-image { width: 100%; height: 350px; order: 1; }
+            .hero-text { padding: 40px 20px; order: 2; }
+            .hero-text h1 { font-size: 36px; }
+            .about { padding: 60px 8%; text-align: center; }
+            .about-image { order: 1; max-width: 280px; margin-bottom: 30px; }
+            .about-text { order: 2; }
+            .grid-fotos { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">NAILS MAIONE</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#agendamento" class="btn-book-nav">Agende</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-image">
+                <img src="imagem1.jpg" alt="Trabalho Nails Maione">
+            </div>
+            <div class="hero-text">
+                <h1>Elevando sua autoestima!</h1>
+                <a href="#agendamento" class="btn-hero">Agende agora</a>
+            </div>
+        </section>
+
+        <section class="portfolio" id="portfolio">
+            <p>Confira Meu Trabalho e Agende Seu Horário.</p>
+            <div class="grid-fotos">
+                <img src="imagem1.jpg" alt="Nail Art 1">
+                <img src="imagem2.jpeg" alt="Nail Art 2">
+                <img src="imagem3.jpeg" alt="Nail Art 3">
+                <img src="imagem4.jpeg" alt="Nail Art 4">
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="about-image">
+                <img src="isadora-sobre.jpeg" alt="Isadora Maione - Nail Designer">
+            </div>
+            <div class="about-text">
+                <h2>Paixão em cada detalhe</h2>
+                <p>Olá! Eu sou a Isadora, responsável pela <strong>Nails Maione</strong>. Minha missão é elevar a autoestima de mulheres através de um atendimento personalizado e técnicas modernas.</p>
+                <p>Especialista em alongamento e esmaltação em gel, prezo pela saúde das suas unhas naturais e por um acabamento impecável com durabilidade.</p>
+                <p>Venha viver uma experiência de cuidado e beleza feita sob medida para você.</p>
+            </div>
+        </section>
+
+        <section class="booking" id="agendamento">
+            <h2>Agende Seu Horário</h2>
+            <div class="container-flex">
+                <div class="form-box">
+                    <div class="form-group">
+                        <label>Data do Atendimento</label>
+                        <input type="date" id="data-agendamento">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Selecione o serviço</label>
+                        <select id="servico"> 
+                            <option value="">Selecione o serviço...</option>
+                            <option value="Fibra de vidro">Fibra de vidro</option>
+                            <option value="Gel na tips">Gel na tips</option>
+                            <option value="Softgel">Softgel</option>
+                            <option value="Banho de gel">Banho de gel</option>
+                            <option value="Esmaltação em gel">Esmaltação em gel</option>
+                            <option value="Manicure">Manicure</option>
+                            <option value="Pédicure">Pédicure</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Selecione o Horário</label>
+                        <select id="horario">
+                            <option value="">Selecione um horário...</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                        </select>
+                    </div>
+
+                    <button class="btn-confirm" onclick="confirmar()">Confirmar Agendamento</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social">
+            <a href="https://www.instagram.com/nailsmaione" target="_blank">
+                <svg class="insta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span>@nailsmaione</span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        function confirmar() {
+            const campoServico = document.getElementById('servico');
+            const campoData = document.getElementById('data-agendamento');
+            const campoHorario = document.getElementById('horario');
+
+            const servico = campoServico.value;
+            const data = campoData.value;
+            const horario = campoHorario.value;
+
+            if (!servico || !data || !horario) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            const dataFormatada = data.split('-').reverse().join('/');
+            const seuNumero = "5521974848133"; 
+            const mensagem = `Olá Nails Maione!%0A%0AGostaria de agendar um horário:%0A%0A💅 *Serviço:* ${servico}%0A📅 *Data:* ${dataFormatada}%0A⏰ *Horário:* ${horario}`;
+
+            window.open(`https://wa.me/${seuNumero}?text=${mensagem}`, '_blank');
+        }
+
+        // Define a data mínima como hoje
+        const inputData = document.getElementById('data-agendamento');
+        if(inputData) {
+            inputData.min = new Date().toISOString().split("T")[0];
+        }
+    </script>
+</body>
+</html>
